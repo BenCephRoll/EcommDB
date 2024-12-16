@@ -14,7 +14,7 @@ const PurchaseSuccessPage = () => {
 		const fetchOrderDetails = async (orderId) => {
 			try {
 				const res = await axios.get(
-					`/api/orders/${orderId}`
+					`https://basstechnomy-kgbr.onrender.com/api/orders/${orderId}`
 				);
 				setOrder(res.data);
 				clearCart();
