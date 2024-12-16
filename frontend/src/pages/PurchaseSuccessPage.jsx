@@ -14,7 +14,7 @@ const PurchaseSuccessPage = () => {
 		const fetchOrderDetails = async (orderId) => {
 			try {
 				const res = await axios.get(
-					`{process.env.CLIENT_URL}/api/orders/${orderId}`
+					`/api/orders/${orderId}`
 				);
 				setOrder(res.data);
 				clearCart();
