@@ -73,8 +73,9 @@ const PurchaseSuccessPage = () => {
 					<p className="text-gray-300 text-center mb-2">
 						Thank you for your order. {"We're"} processing it now.
 					</p>
-					<p className="text-emerald-400 text-center text-sm mb-6">
-						Check your email for order details and updates.
+					<p className="text-red-400 text-center text-sm mb-6">
+						Please Check your email for order details and updates.
+						Our team will contact you for your delivery options and location of delivery 
 					</p>
 					<div className="bg-gray-700 rounded-lg p-4 mb-6">
 						<div className="flex items-center justify-between mb-2">
@@ -86,7 +87,7 @@ const PurchaseSuccessPage = () => {
 						<div className="flex items-center justify-between">
 							<span className="text-sm text-gray-400">Estimated delivery</span>
 							<span className="text-sm font-semibold text-emerald-400">
-								3-5 business days
+								3-7 business days
 							</span>
 						</div>
 					</div>
