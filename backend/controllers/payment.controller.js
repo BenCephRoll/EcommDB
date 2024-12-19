@@ -108,7 +108,7 @@ export const checkoutSuccess = async (req, res) => {
     await sendOrderEmail({
       userEmail: transaction.data.metadata.userEmail,
       orderId: newOrder._id,
-      products: parsedProducts,
+      products: products,
       totalAmount: transaction.data.amount / 100,
     });
 
@@ -116,7 +116,7 @@ export const checkoutSuccess = async (req, res) => {
     await sendOrderEmail({
       userEmail: process.env.ADMIN_EMAIL, // Add admin email in .env
       orderId: newOrder._id,
-      products: parsedProducts,
+      products: products,
       totalAmount: transaction.data.amount / 100,
     });
 
