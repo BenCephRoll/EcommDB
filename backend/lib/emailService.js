@@ -25,53 +25,92 @@ const generateHtml = (order) => {
     .join("");
 
   return `
-<html>
+    <html>
   <head>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.24/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      /* Inline Tailwind Styles */
+      body {
+        font-family: sans-serif;
+        background: linear-gradient(to right, #68D391, #10B981); /* Green to Emerald gradient */
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        font-size: 24px;
+        font-weight: 600;
+        color: #2D3748;
+        margin-bottom: 20px;
+      }
+      .subheading {
+        font-size: 18px;
+        color: #4A5568;
+        margin-bottom: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      th, td {
+        padding: 12px;
+        border: 1px solid #E2E8F0;
+        text-align: left;
+      }
+      th {
+        background: linear-gradient(to right, #68D391, #10B981);
+        color: white;
+        font-weight: 600;
+      }
+      .total {
+        font-size: 18px;
+        font-weight: 600;
+        color: #2D3748;
+        margin-top: 20px;
+      }
+      .footer {
+        text-align: center;
+        font-size: 14px;
+        color: #A0AEC0;
+        margin-top: 30px;
+      }
+      .footer a {
+        color: #10B981;
+        text-decoration: none;
+      }
+    </style>
   </head>
-  <body class="bg-gradient-to-r from-green-400 to-emerald-500 font-sans leading-normal tracking-normal">
-    
-    <!-- Navbar -->
-    <nav class="bg-blue-600 text-white py-4 shadow-md">
-      <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold">Bass-Technomy</div>
-        <div class="space-x-6">
-          <a href="#" class="hover:text-blue-300">Home</a>
-          <a href="#" class="hover:text-blue-300">About</a>
-          <a href="#" class="hover:text-blue-300">Services</a>
-          <a href="#" class="hover:text-blue-300">Contact</a>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-xl mt-16 mb-8">
-      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Order Confirmation</h2>
-      <p class="text-lg text-gray-600 mb-6">Thank you for your purchase! Here are your order details:</p>
-      <table class="min-w-full table-auto border-collapse text-gray-600 mb-6">
+  <body>
+    <!-- Main Container -->
+    <div class="container">
+      <div class="header">Bass-Technomy</div>
+      <div class="subheading">Thank you for your purchase! Here are your order details:</div>
+      <table>
         <thead>
-          <tr class="bg-gradient-to-r from-green-300 to-emerald-300">
-            <th class="border px-6 py-3 text-left font-medium">Product</th>
-            <th class="border px-6 py-3 text-left font-medium">Quantity</th>
-            <th class="border px-6 py-3 text-left font-medium">Price</th>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
           ${productRows}
         </tbody>
       </table>
-      <p class="text-lg text-gray-800 mt-6"><strong>Total Amount:</strong> $${totalAmount.toFixed(2)}</p>
-      <p class="text-sm text-gray-500 mt-4">Order ID: <strong>${orderId}</strong></p>
-      <p class="text-sm text-gray-500 mt-4">If you have any questions, please contact support.</p>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-blue-600 text-white py-4">
-      <div class="max-w-6xl mx-auto text-center">
+      <div class="total"><strong>Total Amount:</strong> $${totalAmount.toFixed(2)}</div>
+      <div class="footer">
+        <p>Order ID: <strong>${orderId}</strong></p>
+        <p>If you have any questions, please contact <a href="mailto:support@basstechnomy.com">support@basstechnomy.com</a>.</p>
         <p>&copy; 2024 Bass-Technomy. All rights reserved.</p>
       </div>
-    </footer>
-
+    </div>
   </body>
 </html>
   `;
