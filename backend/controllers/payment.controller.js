@@ -1,5 +1,6 @@
 import Coupon from "../models/coupon.model.js";
 import Order from "../models/order.model.js";
+import User from "../models/user.model.js";
 import paystack from "paystack-api";
 import { sendOrderEmail } from "../lib/emailService.js"; // Import the sendOrderEmail function
 
@@ -104,9 +105,23 @@ export const checkoutSuccess = async (req, res) => {
 			});
 
 			await newOrder.save();
+
+			    // Assuming the userId is passed via metadata in the transaction
+    const userId = req.body.transaction.data.metadata.userId;
+
+    // Find the user by ID in the database
+    const userfind = await User.findById(userId);
+
+    if (!userfind) {
+      return res.status(404).send({ message: 'User not found' });
+    }
+
+    // Retrieve the user's email
+    const userEmailForSending = userfind.email;
+
 			  // Send order confirmation emails to both the user and admin
     await sendOrderEmail({
-      userEmail: transaction.data.metadata.userEmail,
+      userEmail: userEmailForSending,
       orderId: newOrder._id,
       products: products,
       totalAmount: transaction.data.amount / 100,
