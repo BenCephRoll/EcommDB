@@ -1,4 +1,4 @@
-import { MailtrapClient } from "@mailtrap/sdk";
+import { MailtrapClient } from "mailtrap"
 import dotenv from "dotenv";
 
 // Load environment variables
