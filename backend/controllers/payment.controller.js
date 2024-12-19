@@ -101,6 +101,7 @@ export const checkoutSuccess = async (req, res) => {
 					product: product.id,
 					quantity: product.quantity,
 					price: product.price,
+					name: product.name,
 				})),
 				totalAmount: transaction.data.amount / 100, // Convert from kobo to naira
 				paystackReference: reference,
