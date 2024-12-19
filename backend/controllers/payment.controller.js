@@ -1,6 +1,7 @@
 import Coupon from "../models/coupon.model.js";
 import Order from "../models/order.model.js";
 import paystack from "paystack-api";
+import { sendOrderEmail } from "../lib/emailService.js"; // Import the sendOrderEmail function
 
 const paystackClient = paystack(process.env.PAYSTACK_SECRET_KEY);
 
