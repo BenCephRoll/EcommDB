@@ -103,6 +103,21 @@ export const checkoutSuccess = async (req, res) => {
 			});
 
 			await newOrder.save();
+			  // Send order confirmation emails to both the user and admin
+    await sendOrderEmail({
+      userEmail: transaction.data.metadata.userEmail,
+      orderId: newOrder._id,
+      products: parsedProducts,
+      totalAmount: transaction.data.amount / 100,
+    });
+
+    // Send email to admin (you can specify the admin email here)
+    await sendOrderEmail({
+      userEmail: process.env.ADMIN_EMAIL, // Add admin email in .env
+      orderId: newOrder._id,
+      products: parsedProducts,
+      totalAmount: transaction.data.amount / 100,
+    });
 
 			// Redirect to the success page with the order ID
 			res.redirect(
