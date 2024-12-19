@@ -1,3 +1,4 @@
+import Product from "../models/product.model.js";
 import Coupon from "../models/coupon.model.js";
 import Order from "../models/order.model.js";
 import User from "../models/user.model.js";
@@ -53,6 +54,7 @@ export const createCheckoutSession = async (req, res) => {
 						id: p._id,
 						quantity: p.quantity,
 						price: p.price,
+						name: p.name,
 					}))
 				),
 			},
