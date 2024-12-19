@@ -105,6 +105,7 @@ export const checkoutSuccess = async (req, res) => {
 			});
 
 			await newOrder.save();
+			console.error(req.body.transaction.data.metadata)
 
 			    // Assuming the userId is passed via metadata in the transaction
     const userId = req.body.transaction.data.metadata.userId;
